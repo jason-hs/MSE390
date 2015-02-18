@@ -12,10 +12,10 @@ function [ fx, xr, iter ] = Secant( funct, x0, x1, err )
 		fxm1 = funct(xm1);
 		fxm2 = funct(xm2);
 		
-		x = xm1 - fxm1 * ( ( xm1 - xm2 ) / ( xfm1 - fxm2 ) );
+		x = xm1 - fxm1 * ( ( xm1 - xm2 ) / ( fxm1 - fxm2 ) );
 		ea = abs((xm1-xm2)/xm1);
 		
-		disp(sprintf('Iteration %i: x=%i f(x)=%i', iter, x, funct(x)))
+		disp(sprintf('Iteration %i: x=%i f(x)=%i error=%i', iter, x, funct(x), ea))
 		
 		xm2 = xm1;
 		xm1 = x;
@@ -23,6 +23,7 @@ function [ fx, xr, iter ] = Secant( funct, x0, x1, err )
     end
 	
 	xr = x;
+	fx = funct(x);
 
 end
 
